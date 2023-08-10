@@ -25,7 +25,7 @@ contract MarginAccount is IMarginAccount {
     mapping(address => address) orderBookMap;
 
     // Penalty amount for insufficient funds
-    uint256 insufficiantFundsPenalty;
+    uint256 insufficientFundsPenalty;
 
     // Event emitted when a user deposits funds
     event Deposit(address indexed user, uint256 amount);
@@ -114,10 +114,10 @@ contract MarginAccount is IMarginAccount {
      */
     function lockFunds(address _user, address _indexToken) external override {
         require(msg.sender == orderBookMap[_indexToken], "MarginAccount: only order book can make this call");
-        require(balances[getPositionKey(_user, _indexToken)] > insufficiantFundsPenalty, "MarginAccount: insufficient funds");
+        require(balances[getPositionKey(_user, _indexToken)] > insufficientFundsPenalty, "MarginAccount: insufficient funds");
 
-        lockedFunds[_user] += insufficiantFundsPenalty;
-        balances[getPositionKey(_user, _indexToken)] -= insufficiantFundsPenalty;
+        lockedFunds[_user] += insufficientFundsPenalty;
+        balances[getPositionKey(_user, _indexToken)] -= insufficientFundsPenalty;
     }
 
     /**
@@ -128,10 +128,10 @@ contract MarginAccount is IMarginAccount {
      */
     function unlockFunds(address _user, address _indexToken) external override {
         require(msg.sender == orderBookMap[_indexToken], "MarginAccount: only order book can make this call");
-        require(lockedFunds[_user] >= insufficiantFundsPenalty, "MarginAccount: insufficient funds");
+        require(lockedFunds[_user] >= insufficientFundsPenalty, "MarginAccount: insufficient funds");
 
-        lockedFunds[_user] -= insufficiantFundsPenalty;
-        balances[getPositionKey(_user, _indexToken)] += insufficiantFundsPenalty;
+        lockedFunds[_user] -= insufficientFundsPenalty;
+        balances[getPositionKey(_user, _indexToken)] += insufficientFundsPenalty;
     }
 
     /**
