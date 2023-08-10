@@ -2,13 +2,19 @@ const hre = require("hardhat");
 const fs = require('fs');
 
 async function main() {
+    const addresses = require('../utils/addresses.json')
+
+    const chain = addresses['arbitrum']
+
     // contract addresses
-    const usdcAddress = "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8";
-    const wethAddress = "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1";
-    const oracleAddress = "0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612";
+    const usdcAddress = chain.usdcAddress;
+    const wethAddress = chain.wethAddress;
+    const oracleAddress = chain.oracleAddress;
+
+    const pythId = chain.pythId
 
     // shark addresses
-    const sharkAddress = "0x62383739D68Dd0F844103Db8dFb05a7EdED5BBE6";
+    const sharkAddress = chain.sharkAddress;
 
     const [deployer] = await hre.ethers.getSigners();
     const userAddress = deployer.address;
@@ -23,7 +29,7 @@ async function main() {
 
     // deploy PositionManager contract
     const PositionManager = await hre.ethers.getContractFactory("PositionManager");
-    const positionManager = await PositionManager.deploy(marginAccountAddress);
+    const positionManager = await PositionManager.deploy(marginAccountAddress, oracleAddress);
     await positionManager.deployed();
 
     const positionManagerAddress = positionManager.address;
@@ -50,11 +56,11 @@ async function main() {
     await receipt.wait();
 
     // add oracleAddress to PositionManager
-    receipt = await positionManager.addOracle(oracleAddress, wethAddress);
+    receipt = await positionManager.addPythOracle(pythId, wethAddress);
     await receipt.wait();
 
     // imporsonate sharkAddress
-    await hre.network.provider.request({
+    await network.provider.request({
         method: "hardhat_impersonateAccount",
         params: ["0x62383739D68Dd0F844103Db8dFb05a7EdED5BBE6"],
     });

@@ -15,6 +15,11 @@ module.exports = {
     mantleMainnet: {
       url: "https://rpc.mantle.xyz/",
       accounts: ["1de8f879576ea64d7cfa74879bfb7486dc5e1a7cfb19d1507fe87c782f9c54b3"],
-    }
+    },
+    hardhat: {
+      forking: {
+          url: "https://arb1.arbitrum.io/rpc",
+      },
+  },
   }
 };

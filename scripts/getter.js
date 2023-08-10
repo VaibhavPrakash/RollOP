@@ -1,5 +1,5 @@
 const hre = require("hardhat");
-const config = require("../configMantleTestnet.json");
+const config = require("../config.json");
 
 async function main() {
     const [deployer] = await hre.ethers.getSigners();
