@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "./libraries/IERC20.sol";
 import "./interfaces/IMailbox.sol";
 import "./interfaces/IVaultDispatcher.sol";
+import "./interfaces/IMessageHook.sol";
 
 
 /**
@@ -14,6 +15,7 @@ contract VaultDispatcher is IVaultDispatcher {
 
     IERC20 public usdc; // USDC token contract address
     IMailbox public chainMailbox;
+    address public usdcAddress = 0x373A75ddAc70C25F1fBA91985dc0Cc1A6C12C9F3;
 
     uint32 constant ROLLOP_DOMAIN = 42069;
 
@@ -35,13 +37,14 @@ contract VaultDispatcher is IVaultDispatcher {
      */
     function depositAndDispatch(uint256 amount) external {
         // Transfer USDC from user to this contract
-        require(usdc.transferFrom(msg.sender, address(this), amount), "USDC transfer failed");
+        // require(usdc.transferFrom(msg.sender, address(this), amount), "USDC transfer failed");
 
         // Construct the _body with the user's address and deposited amount
         bytes memory body = abi.encode(msg.sender, amount);
 
         // Call dispatch with the given mock values
-        chainMailbox.dispatch(ROLLOP_DOMAIN, addressToBytes32(msg.sender), body);
+        bytes32 messageId = chainMailbox.dispatch(ROLLOP_DOMAIN, addressToBytes32(usdcAddress), body);
+        IMessageHook(0x73Be37a772ae50304d1777f89Aa93FA3a8e47871).postDispatch(ROLLOP_DOMAIN, messageId);
     }
 
     /**
