@@ -106,12 +106,12 @@ func (ba *FetchingAttributesBuilder) PreparePayloadAttributes(ctx context.Contex
 	}
 
 	txs := make([]hexutil.Bytes, 0, 1+len(depositTxs))
-	//
-	//l1ETHFeedTx, err := L1ETHFeedDepositBytes(seqNumber, l1Info, sysConfig)
-	//if err == nil {
-	//	txs = make([]hexutil.Bytes, 0, 2+len(depositTxs))
-	//	txs = append(txs, l1ETHFeedTx)
-	//}
+	
+	l1ETHFeedTx, err := L1ETHFeedDepositBytes(seqNumber, l1Info, sysConfig)
+	if err == nil {
+		txs = make([]hexutil.Bytes, 0, 2+len(depositTxs))
+		txs = append(txs, l1ETHFeedTx)
+	}
 
 	txs = append(txs, l1InfoTx)
 	txs = append(txs, depositTxs...)
