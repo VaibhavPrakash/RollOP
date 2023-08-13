@@ -14,6 +14,7 @@ async function main() {
 
     // contract addresses
     const usdcAddress = chain.usdcAddress;
+    const hypAddress = usdcAddress
     const wethAddress = chain.wethAddress;
     // const oracleAddress = chain.oracleAddress;
 
@@ -29,7 +30,7 @@ async function main() {
 
     // deploy MarginAccount contract
     const MarginAccount = await hre.ethers.getContractFactory("MarginAccount");
-    const marginAccount = await MarginAccount.deploy(usdcAddress);
+    const marginAccount = await MarginAccount.deploy(usdcAddress,hypAddress);
     await marginAccount.deployed();
 
     const marginAccountAddress = marginAccount.address;
@@ -124,7 +125,7 @@ async function main() {
     var receipt = await marginAccount.deposit(
         1000000000,
         wethAddress,
-        userAddress
+        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
     );
     await receipt.wait();
 

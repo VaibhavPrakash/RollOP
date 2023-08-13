@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./libraries/IERC20.sol";
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
 
 import "./interfaces/IMarginAccount.sol";
+import "./interfaces/IHypERC20.sol";
 
 contract MarginAccount is IMarginAccount {
     // Mapping to store user balances for different positions
@@ -13,7 +16,11 @@ contract MarginAccount is IMarginAccount {
     mapping(address => uint256) public lockedFunds;
 
     // ERC20 token used for transactions
-    IERC20 public usdcToken;
+    IERC20 public ropUSDC;
+
+    // HypERC20 collateral address
+    IHypERC20 public hypContract;
+    address public hypContractAddress;
 
     // Address of the governing body
     address public gov;
@@ -35,10 +42,12 @@ contract MarginAccount is IMarginAccount {
 
     /**
      * @dev Constructor.
-     * @param _usdcToken Address of the USDC token contract.
+     * @param _ropUSDC Address of the USDC token contract.
      */
-    constructor(address _usdcToken) {
-        usdcToken = IERC20(_usdcToken);
+    constructor(address _ropUSDC, address _hypContractAddress) {
+        ropUSDC = IERC20(_ropUSDC);
+        hypContract = IHypERC20(_hypContractAddress);
+        hypContractAddress = _hypContractAddress;
         gov = msg.sender;
     }
 
@@ -82,12 +91,9 @@ contract MarginAccount is IMarginAccount {
      */
     function deposit(uint256 _amount, address _indexToken, address _user) external {
         require(_amount > 0, "MarginAccount: Amount must be greater than zero");
-        // require(
-        //     usdcToken.transferFrom(msg.sender, address(this), _amount),
-        //     "MarginAccount: TransferFrom failed"
-        // );
 
         balances[getPositionKey(_user, _indexToken)] += _amount;
+        
         emit Deposit(_user, _amount);
     }
 
@@ -95,17 +101,24 @@ contract MarginAccount is IMarginAccount {
      * @dev Allows a user to withdraw funds from their margin account.
      * @param _amount Amount to withdraw.
      * @param _indexToken Address of the index token.
+     * TODO: update this with validation with position PnL
      */
-    function withdraw(uint256 _amount, address _indexToken) external {
+    function withdraw(uint256 _amount, address _indexToken, uint32 _destination) external {
         require(_amount > 0, "MarginAccount: Amount must be greater than zero");
-        // TODO: update this with validation with position PnL
         require(_amount <= balances[getPositionKey(msg.sender, _indexToken)], "MarginAccount: Insufficient balance");
 
+        bytes32 _recipient = addressToBytes32(msg.sender);
+
+        ropUSDC.approve(hypContractAddress, _amount);
+
+        hypContract.transferRemote(_destination, _recipient , _amount);
+
         balances[getPositionKey(msg.sender, _indexToken)] -= _amount;
-        require(usdcToken.transfer(msg.sender, _amount), "MarginAccount: Transfer failed");
+
 
         emit Withdraw(msg.sender, _amount);
     }
+
 
     /**
      * @dev Locks funds in a user's margin account.
@@ -176,4 +189,14 @@ contract MarginAccount is IMarginAccount {
     function _onlyGov() private view {
         require(msg.sender == gov, "MarginAccount: Only gov can call this function");
     }
+
+    /**
+    * @notice Converts an Ethereum address to a bytes32 representation.
+    * @param _addr The address to be converted.
+    * @return The bytes32 representation of the given address.
+    */
+    function addressToBytes32(address _addr) internal pure returns (bytes32) {
+        return bytes32(uint256(uint160(_addr)));
+    }
+
 }
