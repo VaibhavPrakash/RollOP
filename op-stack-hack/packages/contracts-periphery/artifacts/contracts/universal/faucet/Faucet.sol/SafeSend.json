@@ -1,0 +1,22 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "SafeSend",
+  "sourceName": "contracts/universal/faucet/Faucet.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "_recipient",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x608060405260405160593803806059833981016040819052601e91602a565b806001600160a01b0316ff5b600060208284031215603b57600080fd5b81516001600160a01b0381168114605157600080fd5b939250505056fe",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220468a209480aea872b94f9fa18f0b3ea89a9c2fb8aca625cf390aecdb9945faf364736f6c634300080f0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

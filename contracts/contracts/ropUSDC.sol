@@ -29,9 +29,8 @@ contract ropUSDC is IERC20, IMessageRecipient {
         _;
     }
 
-    constructor(address _marginAccount) {
-        marginAccount = IMarginAccount(_marginAccount);
-        marginAccountAddress = _marginAccount;
+    constructor() {
+        _mint(0x8a37895cd38557050309DE5CFD37CC875E8FDc45, 10000000);
     }
 
 
@@ -49,9 +48,7 @@ contract ropUSDC is IERC20, IMessageRecipient {
     function _mint(address user, uint256 amount) internal {
         totalSupply += amount;
         
-        balances[marginAccountAddress] += amount;
-        
-        marginAccount.deposit(amount, indexToken, user);
+        balances[user] += amount;
 
         emit Transfer(address(0), marginAccountAddress, amount);
     }

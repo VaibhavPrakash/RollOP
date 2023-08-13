@@ -1,0 +1,147 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_destinationDomain",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "_messenger",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_ism",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "destinationDomain",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ism",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "l1Messenger",
+      "outputs": [
+        {
+          "internalType": "contract ICrossDomainMessenger",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_destination",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_messageId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "postDispatch",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "address": "0x5F07A7f55152bb2bC09F49CDea4ba1E42b440a36",
+  "args": [
+    "42069",
+    "0x72193fd6fd32C834a4aEc87a153b3d6a0B10C030",
+    "0x420000000000000000000000000000000000006b"
+  ],
+  "bytecode": "0x60e060405234801561001057600080fd5b5060405161058738038061058783398101604081905261002f9161006d565b63ffffffff9092166080526001600160a01b0390811660a0521660c0526100bb565b80516001600160a01b038116811461006857600080fd5b919050565b60008060006060848603121561008257600080fd5b835163ffffffff8116811461009657600080fd5b92506100a460208501610051565b91506100b260408501610051565b90509250925092565b60805160a05160c05161048a6100fd6000396000818160c5015261033e01526000818161011e0152610311015260008181605601526101b1015261048a6000f3fe60806040526004361061003f5760003560e01c80632858c55a146100445780633fa843b0146100925780634deefab2146100b35780636140e0e61461010c575b600080fd5b34801561005057600080fd5b506100787f000000000000000000000000000000000000000000000000000000000000000081565b60405163ffffffff90911681526020015b60405180910390f35b6100a56100a03660046103a9565b610140565b604051908152602001610089565b3480156100bf57600080fd5b506100e77f000000000000000000000000000000000000000000000000000000000000000081565b60405173ffffffffffffffffffffffffffffffffffffffff9091168152602001610089565b34801561011857600080fd5b506100e77f000000000000000000000000000000000000000000000000000000000000000081565b600034156101af576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601e60248201527f4f7074696d69736d486f6f6b3a206e6f2076616c756520616c6c6f776564000060448201526064015b60405180910390fd5b7f000000000000000000000000000000000000000000000000000000000000000063ffffffff168363ffffffff161461026a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152602860248201527f4f7074696d69736d486f6f6b3a20696e76616c69642064657374696e6174696f60448201527f6e20646f6d61696e00000000000000000000000000000000000000000000000060648201526084016101a6565b60408051336024820152604480820185905282518083039091018152606490910182526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f5161ad8b0000000000000000000000000000000000000000000000000000000017905290517f3dbb202b00000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff7f00000000000000000000000000000000000000000000000000000000000000001690633dbb202b9061036d907f0000000000000000000000000000000000000000000000000000000000000000908590621d4c00906004016103de565b600060405180830381600087803b15801561038757600080fd5b505af115801561039b573d6000803e3d6000fd5b506000979650505050505050565b600080604083850312156103bc57600080fd5b823563ffffffff811681146103d057600080fd5b946020939093013593505050565b73ffffffffffffffffffffffffffffffffffffffff8416815260006020606081840152845180606085015260005b818110156104285786810183015185820160800152820161040c565b8181111561043a576000608083870101525b5063ffffffff9490941660408401525050601f919091017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe016016080019291505056fea164736f6c634300080f000a",
+  "deployedBytecode": "0x60806040526004361061003f5760003560e01c80632858c55a146100445780633fa843b0146100925780634deefab2146100b35780636140e0e61461010c575b600080fd5b34801561005057600080fd5b506100787f000000000000000000000000000000000000000000000000000000000000000081565b60405163ffffffff90911681526020015b60405180910390f35b6100a56100a03660046103a9565b610140565b604051908152602001610089565b3480156100bf57600080fd5b506100e77f000000000000000000000000000000000000000000000000000000000000000081565b60405173ffffffffffffffffffffffffffffffffffffffff9091168152602001610089565b34801561011857600080fd5b506100e77f000000000000000000000000000000000000000000000000000000000000000081565b600034156101af576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601e60248201527f4f7074696d69736d486f6f6b3a206e6f2076616c756520616c6c6f776564000060448201526064015b60405180910390fd5b7f000000000000000000000000000000000000000000000000000000000000000063ffffffff168363ffffffff161461026a576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152602860248201527f4f7074696d69736d486f6f6b3a20696e76616c69642064657374696e6174696f60448201527f6e20646f6d61696e00000000000000000000000000000000000000000000000060648201526084016101a6565b60408051336024820152604480820185905282518083039091018152606490910182526020810180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167f5161ad8b0000000000000000000000000000000000000000000000000000000017905290517f3dbb202b00000000000000000000000000000000000000000000000000000000815273ffffffffffffffffffffffffffffffffffffffff7f00000000000000000000000000000000000000000000000000000000000000001690633dbb202b9061036d907f0000000000000000000000000000000000000000000000000000000000000000908590621d4c00906004016103de565b600060405180830381600087803b15801561038757600080fd5b505af115801561039b573d6000803e3d6000fd5b506000979650505050505050565b600080604083850312156103bc57600080fd5b823563ffffffff811681146103d057600080fd5b946020939093013593505050565b73ffffffffffffffffffffffffffffffffffffffff8416815260006020606081840152845180606085015260005b818110156104285786810183015185820160800152820161040c565b8181111561043a576000608083870101525b5063ffffffff9490941660408401525050601f919091017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe016016080019291505056fea164736f6c634300080f000a",
+  "devdoc": {
+    "version": 1,
+    "kind": "dev",
+    "methods": {
+      "postDispatch(uint32,bytes32)": {
+        "details": "anyone can call this function, that's why we need to send msg.sender",
+        "params": {
+          "_destination": "The destination domain of the message.",
+          "_messageId": "The message ID."
+        },
+        "returns": {
+          "_0": "gasOverhead The gas overhead for the function call on L2."
+        }
+      }
+    },
+    "title": "HyperlaneOptimismMessageHook"
+  },
+  "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"_messenger\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_ism\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"destinationDomain\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"ism\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"l1Messenger\",\"outputs\":[{\"internalType\":\"contract ICrossDomainMessenger\",\"name\":\"\",\"type\":\"address\"}]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_destination\",\"type\":\"uint32\"},{\"internalType\":\"bytes32\",\"name\":\"_messageId\",\"type\":\"bytes32\"}],\"stateMutability\":\"payable\",\"type\":\"function\",\"name\":\"postDispatch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}]}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"postDispatch(uint32,bytes32)\":{\"details\":\"anyone can call this function, that's why we need to send msg.sender\",\"params\":{\"_destination\":\"The destination domain of the message.\",\"_messageId\":\"The message ID.\"},\"returns\":{\"_0\":\"gasOverhead The gas overhead for the function call on L2.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"postDispatch(uint32,bytes32)\":{\"notice\":\"Hook to inform the optimism ISM of messages published through.\"}},\"version\":1}},\"settings\":{\"remappings\":[\".ignored_clones-with-immutable-args/=node_modules/.ignored_clones-with-immutable-args/src/\",\".ignored_forge-std/=node_modules/.ignored_forge-std/src/\",\"@cwia/=node_modules/clones-with-immutable-args/src/\",\"@eth-optimism/=node_modules/@eth-optimism/\",\"@hyperlane-xyz/=node_modules/@hyperlane-xyz/\",\"@openzeppelin/contracts-upgradeable/=node_modules/@openzeppelin/contracts-upgradeable/\",\"@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/\",\"@rari-capital/solmate/=node_modules/@rari-capital/solmate/\",\"ds-test/=node_modules/ds-test/src/\",\"forge-std/=node_modules/forge-std/src/\"],\"optimizer\":{\"enabled\":true,\"runs\":999999},\"metadata\":{\"bytecodeHash\":\"none\"},\"compilationTarget\":{\"contracts/hyperlane/HyperlaneOptimismMessageHook.sol\":\"HyperlaneOptimismMessageHook\"},\"libraries\":{}},\"sources\":{\"contracts/hyperlane/HyperlaneOptimismMessageHook.sol\":{\"keccak256\":\"0xa90f4005b35d920fdf8b31c11e737f64aaccd4e8be022b6fdae8e9c9fc7b7768\",\"urls\":[\"bzz-raw://ecc1833faa4c304d466b5f765ce7b397e83d9e52a1d5f955d02d936a2330ad1d\",\"dweb:/ipfs/QmRg3VK7CpTxa36cTKXeH6qWMvpQqkdkaDkh4XkKS3rkve\"],\"license\":\"MIT OR Apache-2.0\"},\"node_modules/@eth-optimism/contracts/libraries/bridge/ICrossDomainMessenger.sol\":{\"keccak256\":\"0x8f29ae23021345a20ccac7b5edb3fc38268aef943b65adc8a32e74b80bf1833a\",\"urls\":[\"bzz-raw://fb98d241e11ab070a045674dd156e0e08bae94d594876cf6a89a93b0597ed7c3\",\"dweb:/ipfs/QmWVyApk7QdH4PHwrgBMfTzf3LREPsQRVqc2Ss4gEtNmfe\"],\"license\":\"MIT\"},\"node_modules/@hyperlane-xyz/core/contracts/hooks/OptimismMessageHook.sol\":{\"keccak256\":\"0x437eac22346bbaf6af7c4955f8127732f4febbfad9241557ef16fd7eb892a54d\",\"urls\":[\"bzz-raw://840a7df14ee785d0caa351abf189461ef744df558003f073f3fe59c2bf891bae\",\"dweb:/ipfs/QmNf4LG1SG37LmtYExbBHew6gjGpTQrVTp4rN7HxiLeYpc\"],\"license\":\"MIT OR Apache-2.0\"},\"node_modules/@hyperlane-xyz/core/contracts/interfaces/IInterchainSecurityModule.sol\":{\"keccak256\":\"0x885df58ed61ae6414f5ea2c07bb0542177dace52147f10c0d30acef3ebdff6cf\",\"urls\":[\"bzz-raw://a2c2afe08de232f9946670db4dc3ec6fc272a29c3bb9e8d0eea96dde041f0bb3\",\"dweb:/ipfs/Qma2Tmt6kuac16ucYAxiSt6CvVVHBjrn4eniDe4H8tbz5S\"],\"license\":\"MIT OR Apache-2.0\"},\"node_modules/@hyperlane-xyz/core/contracts/interfaces/hooks/IMessageHook.sol\":{\"keccak256\":\"0x3f87694fb7d709c4c8308aa02bbf0aaea822008893e612451f817d8e0187d02d\",\"urls\":[\"bzz-raw://fd66b593cb92f0e1fda1217c5d026bac74c0804b1b010dae90420ab3bb46281a\",\"dweb:/ipfs/QmY5CydGMF7xthmUY7LWR2iePS62nc6EhFmQKZCBRjMAxy\"],\"license\":\"MIT OR Apache-2.0\"},\"node_modules/@hyperlane-xyz/core/contracts/isms/hook/AbstractHookISM.sol\":{\"keccak256\":\"0x5ee6d5d3bc6ce4d51fb3ce77adcaf5ba6e972958bfaf8fe6f9223e90af11cdc3\",\"urls\":[\"bzz-raw://c9e56dfd6685b9f10c573df996d81f7a42c8d94e653cea181014033201a10689\",\"dweb:/ipfs/QmaiG3ajFwHt3iVBQEgsQg4Qq4PQnV2V9mgJpPPCBr2WLp\"],\"license\":\"MIT OR Apache-2.0\"},\"node_modules/@hyperlane-xyz/core/contracts/isms/hook/CrossChainEnabled.sol\":{\"keccak256\":\"0xe777a3da884817296cea2c8983c390147e5a603d97baca1f8f822754aaa883f4\",\"urls\":[\"bzz-raw://c5f1bb9e963b7a7a3fd927f5fb0655ed889964aaeeef6ca4e6d1eca74b00a9f0\",\"dweb:/ipfs/QmTW8bSchk7rrySSiYpjxE4Qmv8aFmaJn7QEjEapr4xbed\"],\"license\":\"MIT\"},\"node_modules/@hyperlane-xyz/core/contracts/isms/hook/optimism/CrossChainEnabledOptimism.sol\":{\"keccak256\":\"0xf5bdc44df130f8b7c69170f28e14a592161e5b879c90db5e9ce9fc399e17291e\",\"urls\":[\"bzz-raw://6b0ff3299e9d4ea82ab29633c7a1f590c0e274a961b17df29b113d0f0402f00f\",\"dweb:/ipfs/QmdEaoJFyDUty4yu3g8FVJV9UEN77SMeQ2CxmT3ZdxGSom\"],\"license\":\"MIT\"},\"node_modules/@hyperlane-xyz/core/contracts/isms/hook/optimism/LibOptimism.sol\":{\"keccak256\":\"0xa84eb4f8ecabbf1efd7d5942adb541e6be1e88105f95e0cb0c87fe76526b1728\",\"urls\":[\"bzz-raw://5e402b3b971d04a7a2e9dc251f8415e7c7c46868a61510a642aba770812c2ccf\",\"dweb:/ipfs/QmTpm3vB47zdBZqchcb5pA3vWvL5h6bPo5MEruSBg87uLM\"],\"license\":\"MIT\"},\"node_modules/@hyperlane-xyz/core/contracts/isms/hook/optimism/OptimismISM.sol\":{\"keccak256\":\"0xe01529b076de3ed7cd9224b6b4e19738d83d1dda4c6237e65bd6f0faa79525ce\",\"urls\":[\"bzz-raw://3321cdb475bf89ea4125796832f586317c77e0fa9d4caa01be4f0e39b9876490\",\"dweb:/ipfs/QmTybN2NVBsDEhAGwL1WqhMyaakyC6LWgZA6UZn1ne1j1B\"],\"license\":\"MIT OR Apache-2.0\"},\"node_modules/@hyperlane-xyz/core/contracts/libs/Message.sol\":{\"keccak256\":\"0xc1ee33b68f0695fcd8470eef84296aefd3e53bcb93a91d65891803ed66a99612\",\"urls\":[\"bzz-raw://2351dec6f84549b6f85815ddf869455fbb16e01093d03b6bd353d2ef0e68887a\",\"dweb:/ipfs/QmbdxgW3KP9cBoNeHFk75LpCdABTUU4rf657d4cz855E8B\"],\"license\":\"MIT OR Apache-2.0\"},\"node_modules/@hyperlane-xyz/core/contracts/libs/TypeCasts.sol\":{\"keccak256\":\"0x7e3608c35e1109fc137cea688760f9c10223b1e7d110be113ad44ff716974ead\",\"urls\":[\"bzz-raw://6fff310e714caca96e809f5a56884a2e9edf842d928929d6228d6593ad8f3d52\",\"dweb:/ipfs/QmSHQmcZV2GF8CUJjny128rDThPEDvUvrfA5kBs7kAK5GJ\"],\"license\":\"MIT OR Apache-2.0\"},\"node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"keccak256\":\"0x0203dcadc5737d9ef2c211d6fa15d18ebc3b30dfa51903b64870b01a062b0b4e\",\"urls\":[\"bzz-raw://6eb2fd1e9894dbe778f4b8131adecebe570689e63cf892f4e21257bfe1252497\",\"dweb:/ipfs/QmXgUGNfZvrn6N2miv3nooSs7Jm34A41qz94fu2GtDFcx8\"],\"license\":\"MIT\"},\"node_modules/@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol\":{\"keccak256\":\"0x611aa3f23e59cfdd1863c536776407b3e33d695152a266fa7cfb34440a29a8a3\",\"urls\":[\"bzz-raw://9b4b2110b7f2b3eb32951bc08046fa90feccffa594e1176cb91cdfb0e94726b4\",\"dweb:/ipfs/QmSxLwYjicf9zWFuieRc8WQwE4FisA1Um5jp1iSa731TGt\"],\"license\":\"MIT\"},\"node_modules/@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673\",\"urls\":[\"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2\",\"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y\"],\"license\":\"MIT\"},\"node_modules/@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0xd6153ce99bcdcce22b124f755e72553295be6abcd63804cfdffceb188b8bef10\",\"urls\":[\"bzz-raw://35c47bece3c03caaa07fab37dd2bb3413bfbca20db7bd9895024390e0a469487\",\"dweb:/ipfs/QmPGWT2x3QHcKxqe6gRmAkdakhbaRgx3DLzcakHz5M4eXG\"],\"license\":\"MIT\"},\"node_modules/@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"],\"license\":\"MIT\"}},\"version\":1}",
+  "numDeployments": 0,
+  "receipt": {
+    "transactionHash": "0x0f44893833c4bd9fda007a439ad9409f03c9c8c0dde6c8472c6591e1fe67ced8",
+    "transactionIndex": "0x15",
+    "blockHash": "0x177aaecc00a3ef4e8f3ed1c0befe5650cf51ae8a5a364ad280bf4ff6c8e07d6c",
+    "blockNumber": "0x911f34",
+    "from": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+    "to": null,
+    "cumulativeGasUsed": "0x16787dc",
+    "gasUsed": "0x4a747",
+    "contractAddress": "0x5F07A7f55152bb2bC09F49CDea4ba1E42b440a36",
+    "logs": [],
+    "status": "0x1",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "type": "0x2",
+    "effectiveGasPrice": "0xb2d05e12"
+  },
+  "solcInputHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "storageLayout": {
+    "storage": [],
+    "types": {}
+  },
+  "transactionHash": "0x0f44893833c4bd9fda007a439ad9409f03c9c8c0dde6c8472c6591e1fe67ced8",
+  "userdoc": {
+    "version": 1,
+    "kind": "user",
+    "methods": {
+      "postDispatch(uint32,bytes32)": {
+        "notice": "Hook to inform the optimism ISM of messages published through."
+      }
+    },
+    "notice": "Message hook to inform the Optimism ISM of messages published through the native Optimism bridge."
+  }
+}

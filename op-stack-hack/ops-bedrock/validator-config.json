@@ -1,0 +1,78 @@
+{
+  "originchainname": "rollop",
+  "reorgperiod": 1,
+  "validator": {
+    "type": "hexKey",
+    "key": "f94f2358316ae919ed24243bcf55fd3638539676d30acab3d1b25b7717b5ae38"
+  },
+  "checkpointsyncer": {
+    "type": "localStorage",
+    "path": "/app/validator-signatures"
+  },
+  "chains": {
+    "rollop": {
+      "name": "rollop",
+      "domain": 42069,
+      "addresses": {
+        "mailbox": "0x4200000000000000000000000000000000000068",
+        "validatorAnnounce": "0x420000000000000000000000000000000000006c",
+        "interchainGasPaymaster": "0x420000000000000000000000000000000000006d"
+      },
+      "protocol": "ethereum",
+      "finalityBlocks": 1,
+      "index": {
+        "from": 0
+      },
+      "connection": {
+        "type": "http",
+        "url": "http://host.docker.internal:8545"
+      },
+      "signer": {
+        "type": "hexKey",
+        "key": "f94f2358316ae919ed24243bcf55fd3638539676d30acab3d1b25b7717b5ae38"
+      }
+    },
+    "goerli": {
+      "name": "goerli",
+      "domain": 5,
+      "addresses": {
+        "mailbox": "0xFB81b3a5Cb8b1D798bAC17d0D7faec08674e67A8",
+        "interchainGasPaymaster": "0x8ECa229139ee5Fb733687bE3640848582Da76162"
+      },
+      "protocol": "ethereum",
+      "finalityBlocks": 1,
+      "index": {
+        "from": 0
+      },
+      "connection": {
+        "type": "http",
+        "url": "https://eth-goerli.g.alchemy.com/v2/jVSClEN75RPzY3u3lbDqp0H0N_63_FbY"
+      },
+      "signer": {
+        "type": "hexKey",
+        "key": "f94f2358316ae919ed24243bcf55fd3638539676d30acab3d1b25b7717b5ae38"
+      }
+    },
+    "base": {
+      "name": "base",
+      "domain": 84531,
+      "addresses": {
+        "mailbox": "0x373A75ddAc70C25F1fBA91985dc0Cc1A6C12C9F3",
+        "interchainGasPaymaster": "0xf99095768f5195aCcBE6F1BaF6C16193d1ED4FD7"
+      },
+      "protocol": "ethereum",
+      "finalityBlocks": 1,
+      "index": {
+        "from": 0
+      },
+      "connection": {
+        "type": "http",
+        "url": "https://goerli.base.org"
+      },
+      "signer": {
+        "type": "hexKey",
+        "key": "f94f2358316ae919ed24243bcf55fd3638539676d30acab3d1b25b7717b5ae38"
+      }
+    }
+  }
+}

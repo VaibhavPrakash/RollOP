@@ -1,0 +1,471 @@
+{
+  "id": "43e407e8f356f17520f8cf6e37190e31",
+  "_format": "hh-sol-build-info-1",
+  "solcVersion": "0.8.16",
+  "solcLongVersion": "0.8.16+commit.07a7930e",
+  "input": {
+    "language": "Solidity",
+    "sources": {
+      "contracts/testing/helpers/FailingReceiver.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract FailingReceiver {\n    receive() external payable {\n        require(false, \"FailingReceiver\");\n    }\n}\n"
+      }
+    },
+    "settings": {
+      "optimizer": {
+        "enabled": true,
+        "runs": 10000
+      },
+      "outputSelection": {
+        "*": {
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata",
+            "devdoc",
+            "userdoc",
+            "storageLayout",
+            "evm.gasEstimates"
+          ],
+          "": [
+            "ast"
+          ]
+        }
+      },
+      "metadata": {
+        "useLiteralContent": true
+      }
+    }
+  },
+  "output": {
+    "contracts": {
+      "contracts/testing/helpers/FailingReceiver.sol": {
+        "FailingReceiver": {
+          "abi": [
+            {
+              "stateMutability": "payable",
+              "type": "receive"
+            }
+          ],
+          "devdoc": {
+            "kind": "dev",
+            "methods": {},
+            "version": 1
+          },
+          "evm": {
+            "bytecode": {
+              "functionDebugData": {},
+              "generatedSources": [],
+              "linkReferences": {},
+              "object": "6080604052348015600f57600080fd5b5060a98061001e6000396000f3fe608060405236606e576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600f60248201527f4661696c696e6752656365697665720000000000000000000000000000000000604482015260640160405180910390fd5b600080fdfea26469706673582212206fb7af1ef0a2cd10f3732e38c5d4ba7e31e01cab311d9f8b5b3505c218b72d4264736f6c63430008100033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0xA9 DUP1 PUSH2 0x1E PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE CALLDATASIZE PUSH1 0x6E JUMPI PUSH1 0x40 MLOAD PUSH32 0x8C379A000000000000000000000000000000000000000000000000000000000 DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0xF PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x4661696C696E6752656365697665720000000000000000000000000000000000 PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 REVERT JUMPDEST PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 PUSH16 0xB7AF1EF0A2CD10F3732E38C5D4BA7E31 0xE0 SHR 0xAB BALANCE SAR SWAP16 DUP12 JUMPDEST CALLDATALOAD SDIV 0xC2 XOR 0xB7 0x2D TIMESTAMP PUSH5 0x736F6C6343 STOP ADDMOD LT STOP CALLER ",
+              "sourceMap": "57:110:0:-:0;;;;;;;;;;;;;;;;;;;"
+            },
+            "deployedBytecode": {
+              "functionDebugData": {
+                "@_10": {
+                  "entryPoint": null,
+                  "id": 10,
+                  "parameterSlots": 0,
+                  "returnSlots": 0
+                },
+                "abi_encode_tuple_t_stringliteral_a80bc7ffa8071845a2855ccafab7ccb68df351579b6c5d333149982c51aea8b4__to_t_string_memory_ptr__fromStack_reversed": {
+                  "entryPoint": null,
+                  "id": null,
+                  "parameterSlots": 1,
+                  "returnSlots": 1
+                }
+              },
+              "generatedSources": [
+                {
+                  "ast": {
+                    "nodeType": "YulBlock",
+                    "src": "0:355:1",
+                    "statements": [
+                      {
+                        "nodeType": "YulBlock",
+                        "src": "6:3:1",
+                        "statements": []
+                      },
+                      {
+                        "body": {
+                          "nodeType": "YulBlock",
+                          "src": "188:165:1",
+                          "statements": [
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "name": "headStart",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "205:9:1"
+                                  },
+                                  {
+                                    "kind": "number",
+                                    "nodeType": "YulLiteral",
+                                    "src": "216:2:1",
+                                    "type": "",
+                                    "value": "32"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "mstore",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "198:6:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "198:21:1"
+                              },
+                              "nodeType": "YulExpressionStatement",
+                              "src": "198:21:1"
+                            },
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "arguments": [
+                                      {
+                                        "name": "headStart",
+                                        "nodeType": "YulIdentifier",
+                                        "src": "239:9:1"
+                                      },
+                                      {
+                                        "kind": "number",
+                                        "nodeType": "YulLiteral",
+                                        "src": "250:2:1",
+                                        "type": "",
+                                        "value": "32"
+                                      }
+                                    ],
+                                    "functionName": {
+                                      "name": "add",
+                                      "nodeType": "YulIdentifier",
+                                      "src": "235:3:1"
+                                    },
+                                    "nodeType": "YulFunctionCall",
+                                    "src": "235:18:1"
+                                  },
+                                  {
+                                    "kind": "number",
+                                    "nodeType": "YulLiteral",
+                                    "src": "255:2:1",
+                                    "type": "",
+                                    "value": "15"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "mstore",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "228:6:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "228:30:1"
+                              },
+                              "nodeType": "YulExpressionStatement",
+                              "src": "228:30:1"
+                            },
+                            {
+                              "expression": {
+                                "arguments": [
+                                  {
+                                    "arguments": [
+                                      {
+                                        "name": "headStart",
+                                        "nodeType": "YulIdentifier",
+                                        "src": "278:9:1"
+                                      },
+                                      {
+                                        "kind": "number",
+                                        "nodeType": "YulLiteral",
+                                        "src": "289:2:1",
+                                        "type": "",
+                                        "value": "64"
+                                      }
+                                    ],
+                                    "functionName": {
+                                      "name": "add",
+                                      "nodeType": "YulIdentifier",
+                                      "src": "274:3:1"
+                                    },
+                                    "nodeType": "YulFunctionCall",
+                                    "src": "274:18:1"
+                                  },
+                                  {
+                                    "hexValue": "4661696c696e675265636569766572",
+                                    "kind": "string",
+                                    "nodeType": "YulLiteral",
+                                    "src": "294:17:1",
+                                    "type": "",
+                                    "value": "FailingReceiver"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "mstore",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "267:6:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "267:45:1"
+                              },
+                              "nodeType": "YulExpressionStatement",
+                              "src": "267:45:1"
+                            },
+                            {
+                              "nodeType": "YulAssignment",
+                              "src": "321:26:1",
+                              "value": {
+                                "arguments": [
+                                  {
+                                    "name": "headStart",
+                                    "nodeType": "YulIdentifier",
+                                    "src": "333:9:1"
+                                  },
+                                  {
+                                    "kind": "number",
+                                    "nodeType": "YulLiteral",
+                                    "src": "344:2:1",
+                                    "type": "",
+                                    "value": "96"
+                                  }
+                                ],
+                                "functionName": {
+                                  "name": "add",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "329:3:1"
+                                },
+                                "nodeType": "YulFunctionCall",
+                                "src": "329:18:1"
+                              },
+                              "variableNames": [
+                                {
+                                  "name": "tail",
+                                  "nodeType": "YulIdentifier",
+                                  "src": "321:4:1"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "name": "abi_encode_tuple_t_stringliteral_a80bc7ffa8071845a2855ccafab7ccb68df351579b6c5d333149982c51aea8b4__to_t_string_memory_ptr__fromStack_reversed",
+                        "nodeType": "YulFunctionDefinition",
+                        "parameters": [
+                          {
+                            "name": "headStart",
+                            "nodeType": "YulTypedName",
+                            "src": "165:9:1",
+                            "type": ""
+                          }
+                        ],
+                        "returnVariables": [
+                          {
+                            "name": "tail",
+                            "nodeType": "YulTypedName",
+                            "src": "179:4:1",
+                            "type": ""
+                          }
+                        ],
+                        "src": "14:339:1"
+                      }
+                    ]
+                  },
+                  "contents": "{\n    { }\n    function abi_encode_tuple_t_stringliteral_a80bc7ffa8071845a2855ccafab7ccb68df351579b6c5d333149982c51aea8b4__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 15)\n        mstore(add(headStart, 64), \"FailingReceiver\")\n        tail := add(headStart, 96)\n    }\n}",
+                  "id": 1,
+                  "language": "Yul",
+                  "name": "#utility.yul"
+                }
+              ],
+              "immutableReferences": {},
+              "linkReferences": {},
+              "object": "608060405236606e576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600f60248201527f4661696c696e6752656365697665720000000000000000000000000000000000604482015260640160405180910390fd5b600080fdfea26469706673582212206fb7af1ef0a2cd10f3732e38c5d4ba7e31e01cab311d9f8b5b3505c218b72d4264736f6c63430008100033",
+              "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLDATASIZE PUSH1 0x6E JUMPI PUSH1 0x40 MLOAD PUSH32 0x8C379A000000000000000000000000000000000000000000000000000000000 DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0xF PUSH1 0x24 DUP3 ADD MSTORE PUSH32 0x4661696C696E6752656365697665720000000000000000000000000000000000 PUSH1 0x44 DUP3 ADD MSTORE PUSH1 0x64 ADD PUSH1 0x40 MLOAD DUP1 SWAP2 SUB SWAP1 REVERT JUMPDEST PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 PUSH16 0xB7AF1EF0A2CD10F3732E38C5D4BA7E31 0xE0 SHR 0xAB BALANCE SAR SWAP16 DUP12 JUMPDEST CALLDATALOAD SDIV 0xC2 XOR 0xB7 0x2D TIMESTAMP PUSH5 0x736F6C6343 STOP ADDMOD LT STOP CALLER ",
+              "sourceMap": "57:110:0:-:0;;;;;;125:33;;;;;216:2:1;125:33:0;;;198:21:1;255:2;235:18;;;228:30;294:17;274:18;;;267:45;329:18;;125:33:0;;;;;;;57:110;;;"
+            },
+            "gasEstimates": {
+              "creation": {
+                "codeDepositCost": "33800",
+                "executionCost": "87",
+                "totalCost": "33887"
+              }
+            },
+            "methodIdentifiers": {}
+          },
+          "metadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/testing/helpers/FailingReceiver.sol\":\"FailingReceiver\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":10000},\"remappings\":[]},\"sources\":{\"contracts/testing/helpers/FailingReceiver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\ncontract FailingReceiver {\\n    receive() external payable {\\n        require(false, \\\"FailingReceiver\\\");\\n    }\\n}\\n\",\"keccak256\":\"0x5a72e1dc11602739bc83939adad359dd03a77cfee3e2a6301da5b34625928d0e\",\"license\":\"MIT\"}},\"version\":1}",
+          "storageLayout": {
+            "storage": [],
+            "types": null
+          },
+          "userdoc": {
+            "kind": "user",
+            "methods": {},
+            "version": 1
+          }
+        }
+      }
+    },
+    "sources": {
+      "contracts/testing/helpers/FailingReceiver.sol": {
+        "ast": {
+          "absolutePath": "contracts/testing/helpers/FailingReceiver.sol",
+          "exportedSymbols": {
+            "FailingReceiver": [
+              11
+            ]
+          },
+          "id": 12,
+          "license": "MIT",
+          "nodeType": "SourceUnit",
+          "nodes": [
+            {
+              "id": 1,
+              "literals": [
+                "solidity",
+                "^",
+                "0.8",
+                ".0"
+              ],
+              "nodeType": "PragmaDirective",
+              "src": "32:23:0"
+            },
+            {
+              "abstract": false,
+              "baseContracts": [],
+              "canonicalName": "FailingReceiver",
+              "contractDependencies": [],
+              "contractKind": "contract",
+              "fullyImplemented": true,
+              "id": 11,
+              "linearizedBaseContracts": [
+                11
+              ],
+              "name": "FailingReceiver",
+              "nameLocation": "66:15:0",
+              "nodeType": "ContractDefinition",
+              "nodes": [
+                {
+                  "body": {
+                    "id": 9,
+                    "nodeType": "Block",
+                    "src": "115:50:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "hexValue": "66616c7365",
+                              "id": 5,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "bool",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "133:5:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "value": "false"
+                            },
+                            {
+                              "hexValue": "4661696c696e675265636569766572",
+                              "id": 6,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "140:17:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_a80bc7ffa8071845a2855ccafab7ccb68df351579b6c5d333149982c51aea8b4",
+                                "typeString": "literal_string \"FailingReceiver\""
+                              },
+                              "value": "FailingReceiver"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              {
+                                "typeIdentifier": "t_stringliteral_a80bc7ffa8071845a2855ccafab7ccb68df351579b6c5d333149982c51aea8b4",
+                                "typeString": "literal_string \"FailingReceiver\""
+                              }
+                            ],
+                            "id": 4,
+                            "name": "require",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              -18,
+                              -18
+                            ],
+                            "referencedDeclaration": -18,
+                            "src": "125:7:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                              "typeString": "function (bool,string memory) pure"
+                            }
+                          },
+                          "id": 7,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "nameLocations": [],
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "125:33:0",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 8,
+                        "nodeType": "ExpressionStatement",
+                        "src": "125:33:0"
+                      }
+                    ]
+                  },
+                  "id": 10,
+                  "implemented": true,
+                  "kind": "receive",
+                  "modifiers": [],
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "FunctionDefinition",
+                  "parameters": {
+                    "id": 2,
+                    "nodeType": "ParameterList",
+                    "parameters": [],
+                    "src": "95:2:0"
+                  },
+                  "returnParameters": {
+                    "id": 3,
+                    "nodeType": "ParameterList",
+                    "parameters": [],
+                    "src": "115:0:0"
+                  },
+                  "scope": 11,
+                  "src": "88:77:0",
+                  "stateMutability": "payable",
+                  "virtual": false,
+                  "visibility": "external"
+                }
+              ],
+              "scope": 12,
+              "src": "57:110:0",
+              "usedErrors": []
+            }
+          ],
+          "src": "32:136:0"
+        },
+        "id": 0
+      }
+    }
+  }
+}

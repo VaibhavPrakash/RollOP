@@ -42,13 +42,20 @@ contract MarginAccount is IMarginAccount {
 
     /**
      * @dev Constructor.
-     * @param _ropUSDC Address of the USDC token contract.
      */
-    constructor(address _ropUSDC, address _hypContractAddress) {
+    constructor() {
+        gov = msg.sender;
+    }
+
+    function addRop(address _ropUSDC) external {
+        _onlyGov();
         ropUSDC = IERC20(_ropUSDC);
+    }
+
+    function addHyp(address _hypContractAddress) external {
+        _onlyGov();
         hypContract = IHypERC20(_hypContractAddress);
         hypContractAddress = _hypContractAddress;
-        gov = msg.sender;
     }
 
     /**

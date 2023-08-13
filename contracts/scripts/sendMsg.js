@@ -2,7 +2,7 @@ const hre = require("hardhat");
 const fs = require('fs');
 
 async function main() {
-    const dispatcherAddress = "0x5d0B3883042872B0924C053fb48948b465071c65";
+    const dispatcherAddress = "0x1aF6fdD1614549A2DCDfcC14DC7443F6Cf84A5F7";
     // deploy vault contract on gorli
     const VaultDispatcher = await hre.ethers.getContractAt("VaultDispatcher", dispatcherAddress);
     

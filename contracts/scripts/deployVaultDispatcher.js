@@ -7,7 +7,7 @@ async function main() {
     const chain = addresses['arbitrum']
 
     const usdcAddress = chain.usdcAddress;
-    const goerliMailbox = "0xb1c047829d7aFe3BFbE4090C8559016970940478";
+    const goerliMailbox = "0xFB81b3a5Cb8b1D798bAC17d0D7faec08674e67A8";
 
     // deploy vault contract on gorli
     const VaultDispatcher = await hre.ethers.getContractFactory("VaultDispatcher");

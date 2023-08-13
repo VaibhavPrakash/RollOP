@@ -1,0 +1,61 @@
+{
+  "numDeployConfirmations": 1,
+
+  "finalSystemOwner": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+  "portalGuardian": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+  "controller": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+
+  "l1StartingBlockTag": "0x1d8c241df6bdea8ad0270a00c9cdce55fb60c33e85839f11f72d321db2ace7d2",
+
+  "l1ChainID": 5,
+  "l2ChainID": 42069,
+  "l2BlockTime": 2,
+
+  "maxSequencerDrift": 600,
+  "sequencerWindowSize": 3600,
+  "channelTimeout": 300,
+
+  "p2pSequencerAddress": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+  "batchInboxAddress": "0xff00000000000000000000000000000000042069",
+  "batchSenderAddress": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+
+  "l2OutputOracleSubmissionInterval": 120,
+  "l2OutputOracleStartingBlockNumber": 0,
+  "l2OutputOracleStartingTimestamp": 1691925984,
+
+  "l2OutputOracleProposer": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+  "l2OutputOracleChallenger": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+
+  "finalizationPeriodSeconds": 12,
+
+  "proxyAdminOwner": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+  "baseFeeVaultRecipient": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+  "l1FeeVaultRecipient": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+  "sequencerFeeVaultRecipient": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+
+  "baseFeeVaultMinimumWithdrawalAmount": "0x8ac7230489e80000",
+  "l1FeeVaultMinimumWithdrawalAmount": "0x8ac7230489e80000",
+  "sequencerFeeVaultMinimumWithdrawalAmount": "0x8ac7230489e80000",
+  "baseFeeVaultWithdrawalNetwork": 0,
+  "l1FeeVaultWithdrawalNetwork": 0,
+  "sequencerFeeVaultWithdrawalNetwork": 0,
+
+  "gasPriceOracleOverhead": 2100,
+  "gasPriceOracleScalar": 1000000,
+
+  "enableGovernance": true,
+  "governanceTokenSymbol": "OP",
+  "governanceTokenName": "Optimism",
+  "governanceTokenOwner": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45",
+
+  "l2GenesisBlockGasLimit": "0x1c9c380",
+  "l2GenesisBlockBaseFeePerGas": "0x3b9aca00",
+  "l2GenesisRegolithTimeOffset": "0x0",
+
+  "eip1559Denominator": 50,
+  "eip1559Elasticity": 10,
+  "hyperlaneValidators": [
+    "0x8a37895cd38557050309DE5CFD37CC875E8FDc45"
+  ],
+  "fastWithdrawalOwner": "0x8a37895cd38557050309DE5CFD37CC875E8FDc45"
+}

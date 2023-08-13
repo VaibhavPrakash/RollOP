@@ -1,0 +1,14 @@
+{
+  "value": {
+    "validator": "0x8a37895cd38557050309de5cfd37cc875e8fdc45",
+    "mailbox_address": "0x0000000000000000000000004200000000000000000000000000000000000068",
+    "mailbox_domain": 42069,
+    "storage_location": "file:///app/validator-signatures"
+  },
+  "signature": {
+    "r": "0x2450408afcd5c1ec5b9ff3b7795589e65f9d942730ffbf17ba6c36a5ffa26009",
+    "s": "0x770a74e97457248f57867e39991801791566c592cefc7d03aa610fb13f9273c6",
+    "v": 28
+  },
+  "serialized_signature": "0x2450408afcd5c1ec5b9ff3b7795589e65f9d942730ffbf17ba6c36a5ffa26009770a74e97457248f57867e39991801791566c592cefc7d03aa610fb13f9273c61c"
+}

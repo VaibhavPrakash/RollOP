@@ -30,7 +30,7 @@ async function main() {
 
     // deploy MarginAccount contract
     const MarginAccount = await hre.ethers.getContractFactory("MarginAccount");
-    const marginAccount = await MarginAccount.deploy(usdcAddress,hypAddress);
+    const marginAccount = await MarginAccount.deploy();
     await marginAccount.deployed();
 
     const marginAccountAddress = marginAccount.address;
@@ -88,45 +88,6 @@ async function main() {
 
     // add priceFeedAddress to PositionManager
     receipt = await positionManager.addPriceFeed(priceFeedAddress, wethAddress);
-    await receipt.wait();
-
-    // imporsonate sharkAddress
-    await network.provider.request({
-        method: "hardhat_impersonateAccount",
-        params: [sharkAddress],
-    });
-
-    const signer = await hre.ethers.getSigner(sharkAddress);
-
-    const usdcContractShark = await hre.ethers.getContractAt(
-        "contracts/libraries/IERC20.sol:IERC20",
-        usdcAddress,
-        signer
-    );
-
-    var receipt = await usdcContractShark.transfer(userAddress, 1000000000);
-
-    await receipt.wait();
-
-    console.log(
-        "usdc balance: ",
-        (await usdcContractShark.balanceOf(userAddress)).toString()
-    );
-
-    // approve usdc to MarginAccount from deployer
-    const usdcContract = await hre.ethers.getContractAt(
-        "contracts/libraries/IERC20.sol:IERC20",
-        usdcAddress
-    );
-    var receipt = await usdcContract.approve(marginAccountAddress, 1000000000);
-    await receipt.wait();
-
-    // deposit usdc to MarginAccount
-    var receipt = await marginAccount.deposit(
-        1000000000,
-        wethAddress,
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
-    );
     await receipt.wait();
 
     // write contract addresses to a config.json file

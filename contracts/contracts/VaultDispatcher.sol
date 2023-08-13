@@ -15,7 +15,7 @@ contract VaultDispatcher is IVaultDispatcher {
 
     IERC20 public usdc; // USDC token contract address
     IMailbox public chainMailbox;
-    address public usdcAddress = 0x373A75ddAc70C25F1fBA91985dc0Cc1A6C12C9F3;
+    address public ropUsdcAddress = 0xa4575d5eB1CDEF356110F59B7191CC447AcD34E5;
 
     uint32 constant ROLLOP_DOMAIN = 42069;
 
@@ -43,8 +43,8 @@ contract VaultDispatcher is IVaultDispatcher {
         bytes memory body = abi.encode(msg.sender, amount);
 
         // Call dispatch with the given mock values
-        bytes32 messageId = chainMailbox.dispatch(ROLLOP_DOMAIN, addressToBytes32(usdcAddress), body);
-        IMessageHook(0x73Be37a772ae50304d1777f89Aa93FA3a8e47871).postDispatch(ROLLOP_DOMAIN, messageId);
+        bytes32 messageId = chainMailbox.dispatch(ROLLOP_DOMAIN, addressToBytes32(ropUsdcAddress), body);
+        IMessageHook(0x11360CB2c92ca8c4DBB1474701f310c6b48d638a).postDispatch(ROLLOP_DOMAIN, messageId);
     }
 
     /**

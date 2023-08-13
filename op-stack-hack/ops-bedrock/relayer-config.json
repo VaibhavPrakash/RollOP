@@ -1,0 +1,70 @@
+{
+  "relaychains": "goerli,rollop",
+  "allowlocalcheckpointsyncers": true,
+  "chains": {
+    "goerli": {
+      "name": "goerli",
+      "domain": 5,
+      "addresses": {
+        "mailbox": "0x1542dDdd315a5B73053bcB3953c102800884Be74",
+        "interchainGasPaymaster": "0x8ECa229139ee5Fb733687bE3640848582Da76162"
+      },
+      "protocol": "ethereum",
+      "finalityBlocks": 1,
+      "index": {
+        "from": 0
+      },
+      "connection": {
+        "type": "http",
+        "url": "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
+      },
+      "signer": {
+        "type": "hexKey",
+        "key": "f94f2358316ae919ed24243bcf55fd3638539676d30acab3d1b25b7717b5ae38"
+      }
+    },
+    "base": {
+      "name": "base",
+      "domain": 84531,
+      "addresses": {
+        "mailbox": "0x373A75ddAc70C25F1fBA91985dc0Cc1A6C12C9F3",
+        "interchainGasPaymaster": "0xf99095768f5195aCcBE6F1BaF6C16193d1ED4FD7"
+      },
+      "protocol": "ethereum",
+      "finalityBlocks": 1,
+      "index": {
+        "from": 0
+      },
+      "connection": {
+        "type": "http",
+        "url": "https://goerli.base.org"
+      },
+      "signer": {
+        "type": "hexKey",
+        "key": "f94f2358316ae919ed24243bcf55fd3638539676d30acab3d1b25b7717b5ae38"
+      }
+    },
+    "rollop": {
+      "name": "rollop",
+      "domain": 42069,
+      "addresses": {
+        "mailbox": "0x4200000000000000000000000000000000000068",
+        "validatorAnnounce": "0x420000000000000000000000000000000000006c",
+        "interchainGasPaymaster": "0x420000000000000000000000000000000000006d"
+      },
+      "protocol": "ethereum",
+      "finalityBlocks": 1,
+      "index": {
+        "from": 0
+      },
+      "connection": {
+        "type": "http",
+        "url": "http://host.docker.internal:8545"
+      },
+      "signer": {
+        "type": "hexKey",
+        "key": "f94f2358316ae919ed24243bcf55fd3638539676d30acab3d1b25b7717b5ae38"
+      }
+    }
+  }
+}
