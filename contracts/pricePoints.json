@@ -1,0 +1,78 @@
+{
+  "asks": [
+    {
+      "pricePoint": 189000,
+      "size": 0.9
+    },
+    {
+      "pricePoint": 188000,
+      "size": 0.8
+    },
+    {
+      "pricePoint": 187000,
+      "size": 0.7
+    },
+    {
+      "pricePoint": 186000,
+      "size": 0.6
+    },
+    {
+      "pricePoint": 185000,
+      "size": 0.5
+    },
+    {
+      "pricePoint": 184000,
+      "size": 0.4
+    },
+    {
+      "pricePoint": 183000,
+      "size": 0.3
+    },
+    {
+      "pricePoint": 182000,
+      "size": 0.2
+    },
+    {
+      "pricePoint": 181000,
+      "size": 0.1
+    }
+  ],
+  "bids": [
+    {
+      "pricePoint": 179000,
+      "size": 0.1
+    },
+    {
+      "pricePoint": 178000,
+      "size": 0.2
+    },
+    {
+      "pricePoint": 177000,
+      "size": 0.3
+    },
+    {
+      "pricePoint": 176000,
+      "size": 0.4
+    },
+    {
+      "pricePoint": 175000,
+      "size": 0.5
+    },
+    {
+      "pricePoint": 174000,
+      "size": 0.6
+    },
+    {
+      "pricePoint": 173000,
+      "size": 0.7
+    },
+    {
+      "pricePoint": 172000,
+      "size": 0.8
+    },
+    {
+      "pricePoint": 171000,
+      "size": 0.9
+    }
+  ]
+}

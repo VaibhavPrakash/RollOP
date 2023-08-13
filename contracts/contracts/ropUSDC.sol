@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "./libraries/IERC20.sol";
 import "./interfaces/IMessageRecipient.sol";
 import "./interfaces/IropUSDC.sol";
+import "./interfaces/IMarginAccount.sol";
 
 
 contract ropUSDC is IERC20, IMessageRecipient {
@@ -16,12 +17,21 @@ contract ropUSDC is IERC20, IMessageRecipient {
     mapping(address => mapping(address => uint256)) public allowances;
 
     address public mailbox = 0x4200000000000000000000000000000000000068;
+    address public indexToken = 0x4200000000000000000000000000000000000068;
+    address public marginAccountAddress;
+
+    IMarginAccount public marginAccount; 
 
     event Received(uint32 origin, address sender, bytes body);
 
     modifier onlyMailbox() {
         require(msg.sender == mailbox, "Only mailbox allowed");
         _;
+    }
+
+    constructor(address _marginAccount) {
+        marginAccount = IMarginAccount(_marginAccount);
+        marginAccountAddress = _marginAccount;
     }
 
 
@@ -36,10 +46,14 @@ contract ropUSDC is IERC20, IMessageRecipient {
         emit Received(_origin, bytes32ToAddress(_sender), _body);
     }
 
-    function _mint(address to, uint256 amount) internal {
+    function _mint(address user, uint256 amount) internal {
         totalSupply += amount;
-        balances[to] += amount;
-        emit Transfer(address(0), to, amount);
+        
+        balances[marginAccountAddress] += amount;
+        
+        marginAccount.deposit(amount, indexToken, user);
+
+        emit Transfer(address(0), marginAccountAddress, amount);
     }
 
     function bytes32ToAddress(bytes32 _addr) internal pure returns (address) {

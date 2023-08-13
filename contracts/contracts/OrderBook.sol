@@ -22,7 +22,7 @@ contract OrderBook is IOrderBook {
 
     struct PricePoint {
         uint256 totalCompletedOrCanceledOrders;
-        uint256 totalOrdersAtPrice; // sum of size of all orders placed at the price point
+        uint256 totalSizeAtPrice; // sum of size of all orders placed at the price point
         uint256 executableSize; // market orders that have been executed and can be claimed by limit order owners
     }
 
@@ -107,7 +107,7 @@ contract OrderBook is IOrderBook {
 
         PricePoint storage _pricePoint = s_buyPricePoints[_price];
 
-        if (_pricePoint.totalOrdersAtPrice == 0) {
+        if (_pricePoint.totalSizeAtPrice == 0) {
             _insertBuyPrice(_price);
         }
 
@@ -129,7 +129,7 @@ contract OrderBook is IOrderBook {
 
         PricePoint storage _pricePoint = s_sellPricePoints[_price];
 
-        if (_pricePoint.totalOrdersAtPrice == 0) {
+        if (_pricePoint.totalSizeAtPrice == 0) {
             _insertSellPrice(_price);
         }
 
@@ -147,13 +147,13 @@ contract OrderBook is IOrderBook {
      * @param _size Size of the order.
      */
     function _addOrder(PricePoint storage _pricePoint, uint96 _price, uint256 _size, uint256 _orderId) internal {
-        uint256 acceptableRange = (_pricePoint.totalOrdersAtPrice == 0)
+        uint256 acceptableRange = (_pricePoint.totalSizeAtPrice == 0)
             ? 0
-            : _pricePoint.totalOrdersAtPrice;
+            : _pricePoint.totalSizeAtPrice;
 
         s_orders[_orderId] = Order(msg.sender, _price, _size, acceptableRange);
 
-        _pricePoint.totalOrdersAtPrice += _size;
+        _pricePoint.totalSizeAtPrice += _size;
     }
 
     /**
@@ -204,7 +204,7 @@ contract OrderBook is IOrderBook {
         uint256 _minAsk = s_sellOrdersHeap[0];
 
         PricePoint memory m_pricePoint = s_sellPricePoints[_minAsk];
-        uint256 _volumeAtPricePoint = m_pricePoint.totalOrdersAtPrice - m_pricePoint.totalCompletedOrCanceledOrders - m_pricePoint.executableSize;
+        uint256 _volumeAtPricePoint = m_pricePoint.totalSizeAtPrice - m_pricePoint.totalCompletedOrCanceledOrders - m_pricePoint.executableSize;
 
         uint256 _priceToPay = 0;
         uint256 _executedSize = 0;
@@ -226,7 +226,7 @@ contract OrderBook is IOrderBook {
             _minAsk = s_sellOrdersHeap[0];
             m_pricePoint = s_sellPricePoints[_minAsk];
 
-            _volumeAtPricePoint = m_pricePoint.totalOrdersAtPrice - m_pricePoint.totalCompletedOrCanceledOrders - m_pricePoint.executableSize;
+            _volumeAtPricePoint = m_pricePoint.totalSizeAtPrice - m_pricePoint.totalCompletedOrCanceledOrders - m_pricePoint.executableSize;
         }
 
         if (_size > 0 && s_sellOrdersHeap.length > 0) {
@@ -257,7 +257,7 @@ contract OrderBook is IOrderBook {
         uint256 _maxBid = s_buyOrdersHeap[0];
 
         PricePoint memory m_pricePoint = s_buyPricePoints[_maxBid];
-        uint256 _volumeAtPricePoint = m_pricePoint.totalOrdersAtPrice - m_pricePoint.totalCompletedOrCanceledOrders - m_pricePoint.executableSize;
+        uint256 _volumeAtPricePoint = m_pricePoint.totalSizeAtPrice - m_pricePoint.totalCompletedOrCanceledOrders - m_pricePoint.executableSize;
         
         uint256 _priceToPay = 0;
         uint256 _executedSize = 0;
@@ -279,7 +279,7 @@ contract OrderBook is IOrderBook {
             _maxBid = s_buyOrdersHeap[0];
             m_pricePoint = s_buyPricePoints[_maxBid];
 
-            _volumeAtPricePoint = m_pricePoint.totalOrdersAtPrice - m_pricePoint.totalCompletedOrCanceledOrders - m_pricePoint.executableSize;
+            _volumeAtPricePoint = m_pricePoint.totalSizeAtPrice - m_pricePoint.totalCompletedOrCanceledOrders - m_pricePoint.executableSize;
         }
 
         if (_size > 0 && s_buyOrdersHeap.length > 0) {

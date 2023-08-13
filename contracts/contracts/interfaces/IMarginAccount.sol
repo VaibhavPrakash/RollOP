@@ -7,5 +7,8 @@ interface IMarginAccount {
     function lockFunds(address _user, address _indexToken) external;
     function unlockFunds(address _user, address _indexToken) external;
 
+    function deposit(uint256 _amount, address _indexToken, address _user) external;
+    function withdraw(uint256 _amount, address _indexToken) external;
+
     function balances(bytes32 _id) external returns (uint256);
 }

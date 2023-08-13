@@ -78,16 +78,17 @@ contract MarginAccount is IMarginAccount {
      * The user must approve the contract to transfer the funds on their behalf.
      * @param _amount Amount to deposit.
      * @param _indexToken Address of the index token.
+     * @param _user Address of the user depositing.
      */
-    function deposit(uint256 _amount, address _indexToken) external {
+    function deposit(uint256 _amount, address _indexToken, address _user) external {
         require(_amount > 0, "MarginAccount: Amount must be greater than zero");
-        require(
-            usdcToken.transferFrom(msg.sender, address(this), _amount),
-            "MarginAccount: TransferFrom failed"
-        );
+        // require(
+        //     usdcToken.transferFrom(msg.sender, address(this), _amount),
+        //     "MarginAccount: TransferFrom failed"
+        // );
 
-        balances[getPositionKey(msg.sender, _indexToken)] += _amount;
-        emit Deposit(msg.sender, _amount);
+        balances[getPositionKey(_user, _indexToken)] += _amount;
+        emit Deposit(_user, _amount);
     }
 
     /**

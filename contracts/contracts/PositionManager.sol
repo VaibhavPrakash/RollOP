@@ -8,6 +8,7 @@ import "@pythnetwork/pyth-sdk-solidity/PythStructs.sol";
 
 import "./interfaces/IOrderBook.sol";
 import "./interfaces/IMarginAccount.sol";
+import "./interfaces/IPriceFeed.sol";
 
 // size is 10**10
 // price is 10**2
@@ -27,12 +28,12 @@ contract PositionManager {
     mapping(address => int256) public s_cumulativeFundingRates;
     mapping(address => uint256) public s_lastFundingTimes;
     mapping(address => address) public s_oracles;
-    mapping(address => bytes32) public s_pythOracleIds;
+    mapping(address => address) public s_oracleIds;
 
     mapping(address => address) s_orderBookMap;
     address public marginAccount;
 
-    IPyth pyth;
+    IPriceFeed priceFeed;
 
     // constants
     uint256 constant FUNDING_INTERVAL = 1 hours;
@@ -41,9 +42,9 @@ contract PositionManager {
     int256 constant SIZE_PRECISSION = 10**10;
     int256 constant MAX_LVG = 50;
 
-    constructor(address _marginAccount, address _pythAddress) {
+    constructor(address _marginAccount, address _priceFeedAddress) {
         marginAccount = _marginAccount;
-        pyth = IPyth(_pythAddress);
+        priceFeed = IPriceFeed(_priceFeedAddress);
     
         gov = msg.sender;
     }
@@ -58,9 +59,9 @@ contract PositionManager {
         s_orderBookMap[_indexToken] = _orderBook;
     }
 
-    function addPythOracle(bytes32 _id, address _indexToken) external {
+    function addPriceFeed(address _id, address _indexToken) external {
         _onlyGov();
-        s_pythOracleIds[_indexToken] = _id;
+        s_oracleIds[_indexToken] = _id;
     }
 
     function updateFundingRate(address _indexToken) external {
@@ -70,8 +71,8 @@ contract PositionManager {
 
         s_lastFundingTimes[_indexToken] = block.timestamp.div(FUNDING_INTERVAL).mul(FUNDING_INTERVAL);
 
-        PythStructs.Price memory _pythPrice =  pyth.getPrice(s_pythOracleIds[_indexToken]);
-        int256 _indexPrice = _pythPrice.price;
+        uint64 _feedPrice =  priceFeed.getPrice(s_oracleIds[_indexToken]);
+        int256 _indexPrice = int256((uint256(_feedPrice)));
 
         (uint256 _bid, uint256 _ask) = IOrderBook(s_orderBookMap[_indexToken]).pricePoints();
 
@@ -159,8 +160,10 @@ contract PositionManager {
         bytes32 _positionKey = getPositionKey(_user, _indexToken);
         Position memory _position = s_positions[_positionKey];
 
-        PythStructs.Price memory _pythPrice =  pyth.getPrice(s_pythOracleIds[_indexToken]);
-        int256 _indexPrice = _pythPrice.price;
+        uint64 _feedPrice =  priceFeed.getPrice(s_oracleIds[_indexToken]);
+        int256 _indexPrice = int256((uint256(_feedPrice)));
+
+
 
         return (_position.size * _indexPrice) / SIZE_PRECISSION / PRICE_TO_PRICE_FEED - _position.amountToPay;
     }
@@ -182,8 +185,9 @@ contract PositionManager {
         int256 _fundingFee = _fundingRate - m_position.entryFundingRate;
         uint256 _userMargin = IMarginAccount(marginAccount).updateFundingFee(_user, _indexToken, _fundingFee * PRICE_TO_USDC);
 
-        PythStructs.Price memory _pythPrice =  pyth.getPrice(s_pythOracleIds[_indexToken]);
-        int256 _indexPrice = _pythPrice.price;
+        uint64 _feedPrice =  priceFeed.getPrice(s_oracleIds[_indexToken]);
+        int256 _indexPrice = int256((uint256(_feedPrice)));
+
 
         int256 _positionValue = (m_position.size * _indexPrice) / SIZE_PRECISSION / PRICE_TO_PRICE_FEED - m_position.amountToPay;
 
@@ -206,8 +210,8 @@ contract PositionManager {
     ) public view {
         Position memory _position = s_positions[_positionKey];
 
-        PythStructs.Price memory _pythPrice =  pyth.getPrice(s_pythOracleIds[_indexToken]);
-        int256 _indexPrice = _pythPrice.price;
+        uint64 _feedPrice =  priceFeed.getPrice(s_oracleIds[_indexToken]);
+        int256 _indexPrice = int256((uint256(_feedPrice)));
 
         int256 _positionValue = (_position.size * _indexPrice) / SIZE_PRECISSION / PRICE_TO_PRICE_FEED - _position.amountToPay;
 
